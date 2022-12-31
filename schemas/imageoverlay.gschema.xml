@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.imageoverlay" path="/org/gnome/shell/extensions/imageoverlay/">
+    <key name="overlay-0" type="as">
+      <default>
+        <![CDATA[['<Shift>F12']]]>
+      </default>
+      <summary>Shows Overlay 0</summary>
+      <description>
+        Shortcut to show overlay number 0.
+      </description>
+    </key>
+    <key name="overlay-1" type="as">
+      <default>
+        <![CDATA[['<Shift>F14']]]>
+      </default>
+      <summary>Shows Overlay 1</summary>
+      <description>
+        Shortcut to show overlay number 1.
+      </description>
+    </key>
+    <key name="overlay-2" type="as">
+      <default>
+        <![CDATA[['<Shift>F15']]]>
+      </default>
+      <summary>Shows Overlay 2</summary>
+      <description>
+        Shortcut to show overlay number 2.
+      </description>
+    </key>
+    <key name="overlay-3" type="as">
+      <default>
+        <![CDATA[['<Shift>F16']]]>
+      </default>
+      <summary>Shows Overlay 3</summary>
+      <description>
+        Shortcut to show overlay number 3.
+      </description>
+    </key>
+    <key name="overlay-4" type="as">
+      <default>
+        <![CDATA[['<Shift>F17']]]>
+      </default>
+      <summary>Shows Overlay 4</summary>
+      <description>
+        Shortcut to show overlay number 4.
+      </description>
+    </key>
+    <key name="overlay-5" type="as">
+      <default>
+        <![CDATA[['<Shift>F18']]]>
+      </default>
+      <summary>Shows Overlay 5</summary>
+      <description>
+        Shortcut to show overlay number 5.
+      </description>
+    </key>
+    <key name="overlay-6" type="as">
+      <default>
+        <![CDATA[['<Shift>F19']]]>
+      </default>
+      <summary>Shows Overlay 6</summary>
+      <description>
+        Shortcut to show overlay number 6.
+      </description>
+    </key>
+    <key name="overlay-7" type="as">
+      <default>
+        <![CDATA[['<Shift>F20']]]>
+      </default>
+      <summary>Shows Overlay 7</summary>
+      <description>
+        Shortcut to show overlay number 7.
+      </description>
+    </key>
+    <key name="overlay-8" type="as">
+      <default>
+        <![CDATA[['<Shift>F21']]]>
+      </default>
+      <summary>Shows Overlay 8</summary>
+      <description>
+        Shortcut to show overlay number 8.
+      </description>
+    </key>
+    <key name="overlay-9" type="as">
+      <default>
+        <![CDATA[['<Shift>F22']]]>
+      </default>
+      <summary>Shows Overlay 9</summary>
+      <description>
+        Shortcut to show overlay number 9.
+      </description>
+    </key>
+
+    <key type="s" name="file-0">
+      <default>".config/gnome-image-overlay/layer0.svg"</default>
+      <description>file path of image used for overlay number 0</description>
+    </key>
+        <key type="s" name="file-1">
+      <default>".config/gnome-image-overlay/layer1.svg"</default>
+      <description>file path of image used for overlay number 1</description>
+    </key>
+        <key type="s" name="file-2">
+      <default>".config/gnome-image-overlay/layer2.svg"</default>
+      <description>file path of image used for overlay number 2</description>
+    </key>
+        <key type="s" name="file-3">
+      <default>".config/gnome-image-overlay/layer3.svg"</default>
+      <description>file path of image used for overlay number 3</description>
+    </key>
+        <key type="s" name="file-4">
+      <default>".config/gnome-image-overlay/layer4.svg"</default>
+      <description>file path of image used for overlay number 4</description>
+    </key>
+        <key type="s" name="file-5">
+      <default>".config/gnome-image-overlay/layer5.svg"</default>
+      <description>file path of image used for overlay number 5</description>
+    </key>
+        <key type="s" name="file-6">
+      <default>".config/gnome-image-overlay/layer6.svg"</default>
+      <description>file path of image used for overlay number 6</description>
+    </key>
+        <key type="s" name="file-7">
+      <default>".config/gnome-image-overlay/layer7.svg"</default>
+      <description>file path of image used for overlay number 7</description>
+    </key>
+        <key type="s" name="file-8">
+      <default>".config/gnome-image-overlay/layer8.svg"</default>
+      <description>file path of image used for overlay number 8</description>
+    </key>
+        <key type="s" name="file-9">
+      <default>".config/gnome-image-overlay/layer9.svg"</default>
+      <description>file path of image used for overlay number 9</description>
+    </key>
+  </schema>
+</schemalist>

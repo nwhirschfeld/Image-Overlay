@@ -1,0 +1,11 @@
+{
+  "name": "Image Overlay",
+  "description": "This GNOME Shell extension allows you to configure multiple images as overlays and bind them to keyboard shortcuts. Possible use cases include quickly accessing cheat sheets or covering your work.",
+  "uuid": "imageoverlay@nw.nwhirschfeld.de",
+  "version": 0.1,
+  "shell-version": [
+    "43"
+  ],
+  "url": "https://github.com/nwhirschfeld/Image-Overlay",
+  "settings-schema": "org.gnome.shell.extensions.imageoverlay"
+}

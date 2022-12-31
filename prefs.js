@@ -1,3 +1,9 @@
+/*
+ * This code is heavily inspired by and based on the amazing work of christopher-l 
+ * (https://github.com/christopher-l) and his project space-bar 
+ * (https://github.com/christopher-l/space-bar).
+ */
+
 const {Adw, Gdk, Gtk, GLib} = imports.gi;
 const ExtensionUtils = imports.misc.extensionUtils;
 
@@ -118,7 +124,6 @@ function addShortcutPicker({
         dialog.set_child(dialogBox);
         dialog.show();
     }
-
     row.connect('activated', () => showDialog());
 }
 
@@ -130,7 +135,7 @@ function fillPreferencesWindow(window) {
     page.set_title('Settings');
     page.window = window;
 
-    settings = ExtensionUtils.getSettings();
+    let settings = ExtensionUtils.getSettings();
 
     for (let id = 0; id < 10; id++) {
         let group = new Adw.PreferencesGroup();

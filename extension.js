@@ -1,18 +1,22 @@
-'use strict';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import Meta from 'gi://Meta';
+import St from 'gi://St';
+import Shell from 'gi://Shell';
+import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
+export default class ImageOverlayExtension extends Extension {
 
-const Main = imports.ui.main;
-const { Meta, St, Shell } = imports.gi;
+    constructor(metadata) {
+        super(metadata);
 
-let overlay = null;
-let settings = null;
-let shortcuts = [];
+        console.debug(`constructing ${this.metadata.name}`);
+        this.overlay = null;
+this.settings = null;
+this.shortcuts = [];
+this.hidden = true;
+    }
 
-let hidden = true;
-
-function setStyle(image) {
+setStyle(image) {
     let {
         0: width,
         1: height
@@ -22,7 +26,7 @@ function setStyle(image) {
             width >= 1280 ? 40 : 20;
     width -= border_size * 2;
     height -= border_size * 2;
-    overlay.set_style(
+    this.overlay.set_style(
         `background-color: transparent;
         background: url(${image});
         background-size:     contain;
@@ -34,56 +38,65 @@ function setStyle(image) {
     );
 }
 
-function showOverlay() {
-    Main.layoutManager.addChrome(overlay, {
+showOverlay() {
+    Main.layoutManager.addChrome(this.overlay, {
         affectsInputRegion: false
     });
 }
 
-function hideOverlay() {
-    Main.layoutManager.removeChrome(overlay);
-    overlay.destroy();
-    overlay = null;
+hideOverlay() {
+    if (!this.overlay) {
+      return;
+    }
+
+    Main.layoutManager.removeChrome(this.overlay);
+    this.overlay.destroy();
+    this.overlay = null;
 }
 
-function click(image) {
-    hidden = !hidden;
-    if (hidden) {
-        hideOverlay();
+click(image) {
+console.debug(`${this.metadata.name} clicked`)
+    this.hidden = !this.hidden;
+    if (this.hidden) {
+        this.hideOverlay();
     } else {
-        overlay = new St.Widget();
-        setStyle(image);
-        showOverlay();
+        this.overlay = new St.Widget();
+        this.setStyle(image);
+        this.showOverlay();
     }
 }
 
-function registerShortcut(name, callback) {
+registerShortcut(name, callback) {
     Main.wm.addKeybinding(
         name,
-        settings,
+        this.settings,
         Meta.KeyBindingFlags.NONE,
         Shell.ActionMode.ALL,
         callback
     );
 
-    shortcuts.push(name);
+    this.shortcuts.push(name);
 }
 
-function init() {
+init() {
 }
 
-function enable() {
-    settings = ExtensionUtils.getSettings();
+enable() {
+    console.debug(`enabling ${this.metadata.name}`);
+    this.settings = this.getSettings();
     for (let id = 0; id < 10; id++) {
-        registerShortcut(`overlay-${id}`, function () {
-            click(settings.get_string(`file-${id}`));
+        this.registerShortcut(`overlay-${id}`, () => {
+            this.click(this.settings.get_string(`file-${id}`));
         });
     }
 }
 
-function disable() {
-    hideOverlay();
-    shortcuts.forEach((id) => Main.wm.removeKeybinding(id))
-    shortcuts = [];
-    settings = null;
+disable() {
+    console.debug(`disabling ${this.metadata.name}`);
+    this.hideOverlay();
+    this.shortcuts.forEach((id) => Main.wm.removeKeybinding(id))
+    this.shortcuts = [];
+    this.settings = null;
+}
+
 }

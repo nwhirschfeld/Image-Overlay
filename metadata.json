@@ -4,7 +4,7 @@
   "uuid": "imageoverlay@nw.nwhirschfeld.de",
   "version": 0.1,
   "shell-version": [
-    "43"
+    "45"
   ],
   "url": "https://github.com/nwhirschfeld/Image-Overlay",
   "settings-schema": "org.gnome.shell.extensions.imageoverlay"

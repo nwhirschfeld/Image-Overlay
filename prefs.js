@@ -4,12 +4,15 @@
  * (https://github.com/christopher-l/space-bar).
  */
 
-const {Adw, Gdk, Gtk, GLib} = imports.gi;
-const ExtensionUtils = imports.misc.extensionUtils;
+import Adw from 'gi://Adw';
+import Gdk from 'gi://Gdk';
+import Gtk from 'gi://Gtk';
+import GLib from 'gi://GLib';
+import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
+//import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-
-function addFilePicker({
+export default class ImageOverlayExtensionPreferences extends ExtensionPreferences {
+addFilePicker({
                            group,
                            key,
                            title,
@@ -48,7 +51,7 @@ function addFilePicker({
     });
 }
 
-function addShortcutPicker({
+addShortcutPicker({
                                  window,
                                  group,
                                  key,
@@ -127,28 +130,28 @@ function addShortcutPicker({
     row.connect('activated', () => showDialog());
 }
 
-function init() {
+init() {
 }
 
-function fillPreferencesWindow(window) {
+fillPreferencesWindow(window) {
     let page = new Adw.PreferencesPage();
     page.set_title('Settings');
     page.window = window;
 
-    let settings = ExtensionUtils.getSettings();
+    let settings = this.getSettings();
 
     for (let id = 0; id < 10; id++) {
         let group = new Adw.PreferencesGroup();
         group.set_description(`Overlay No. ${id + 1}`);
         page.add(group);
-        addShortcutPicker({
+        this.addShortcutPicker({
             settings: settings,
             window: window,
             group,
             key: `overlay-${id}`,
             title: "Shortcut to toggle the overlay",
         });
-        addFilePicker({
+        this.addFilePicker({
             settings: settings,
             group,
             key: `file-${id}`,
@@ -156,4 +159,6 @@ function fillPreferencesWindow(window) {
         })
     }
     window.add(page);
+}
+
 }
